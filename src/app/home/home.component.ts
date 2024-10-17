@@ -19,7 +19,7 @@ export class HomeComponent {
   chatContainer: any;
   videoContainer: any;
   controlsContainer: any;
-  sessionName: string = "1o1-Demo";
+  sessionName: string = "1o1-Test-Demo";
 
   inSession: boolean = false
   sub: any;
@@ -28,7 +28,7 @@ export class HomeComponent {
   role: number = 0;
   config = {
     videoSDKJWT: '',
-    sessionName: '1o1-Demo',
+    sessionName: '1o1-Test-Demo',
     userName: '',
     sessionPasscode: '123',
     features: ['preview', 'video', 'audio', 'users', 'chat'],
