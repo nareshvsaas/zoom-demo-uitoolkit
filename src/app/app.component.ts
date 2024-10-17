@@ -1,13 +1,28 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CommonModule, DOCUMENT } from '@angular/common';
+import { Component, Inject } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [FormsModule, RouterModule, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'zoom-demo-1o1-uitoolkit';
+  
+  name:string ='';
+  role:string = '';
+  
+  zoomLoaded: boolean = false;
+  constructor(private route: Router){
+
+  }
+joinMeeting(){
+console.log(this.name + "   " + this.role);
+this.zoomLoaded = true;
+this.route.navigate(['home/'+this.name +'/' + this.role])
+}
 }
