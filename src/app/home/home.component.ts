@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -41,7 +41,7 @@ export class HomeComponent {
   };
  
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private elementRef: ElementRef) {
 
   }
 
@@ -71,6 +71,10 @@ export class HomeComponent {
     this.sessionContainer = document.getElementById('sessionContainer');
     uitoolkit.joinSession(this.sessionContainer, this.config);
 
+    uitoolkit.onSessionJoined(() => {
+      this.setGalleryView();
+    });
+
     // this.uitoolkitContainer = document.getElementById('uitoolkitContainer');
     // this.videoContainer = document.getElementById('videoContainer');
     // this.chatContainer = document.getElementById('chatContainer');
@@ -81,6 +85,19 @@ export class HomeComponent {
     // uitoolkit.showVideoComponent(this.videoContainer);
     // uitoolkit.showChatComponent(this.chatContainer);
   
+  }
+
+   setGalleryView() {
+    const changeViewButton = this.elementRef.nativeElement.querySelector('[aria-label="Change view"]');
+    changeViewButton?.click();
+
+    const spans = this.elementRef.nativeElement.querySelectorAll('span');
+  
+  // Cast NodeList to HTMLSpanElement[]
+  const spanArray = Array.from(spans) as HTMLSpanElement[];
+  const gallerySpan = spanArray.find(span => span.textContent?.includes('Gallery'));
+
+  gallerySpan?.click();
   }
 
   
