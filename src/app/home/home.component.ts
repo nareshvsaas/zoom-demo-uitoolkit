@@ -30,7 +30,7 @@ export class HomeComponent {
     videoSDKJWT: '',
     sessionName: '1o1-Test-Demo',
     userName: '',
-    sessionPasscode: '123',
+    sessionPasscode: '',
     features: ['preview', 'video', 'audio', 'users', 'chat'],
     options: { init: {}, audio: {}, video: {}},
     virtualBackground: {
